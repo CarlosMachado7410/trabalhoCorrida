@@ -34,7 +34,7 @@ dPixel = 0
 vitoria = pygame.mixer.Sound("recursos/vitoria.mp3")
 vitoria.set_volume(0.5)
 pygame.mixer.music.load("recursos/trilha.mp3")
-pygame.mixer.music.play(-1) #-1 looping, 1,2 3 vezes
+pygame.mixer.music.play(-1)
 somDaVitoria = False
 
 acabou = False
@@ -62,12 +62,12 @@ while True:
     
     if movXCar1 >= movXCar2 and movXCar1 >= movXCar3:
         vencedor = 'Vermelho'
-        if movXCar2 >= movXCar3:  # se o carro amarelo é o segundo colado
+        if movXCar2 >= movXCar3:
             dPixiel = movXCar1 - movXCar2
             secLugar = 'Amarelo'
             tercLugar = 'Azul'
             car2_car3 = movXCar2 - movXCar3
-        else:  #o carro azul é o segundo colocado
+        else:
             dPixiel = movXCar1 - movXCar3
             secLugar = 'Azul'
             tercLugar = 'Amarelo'
@@ -75,37 +75,37 @@ while True:
 
     elif movXCar2 >= movXCar1 and movXCar2 >= movXCar3:
         vencedor = 'Amarelo'
-        if movXCar1 >= movXCar3:  #se o carro vermelho é o segundo colocado
+        if movXCar1 >= movXCar3:  
             dPixiel = movXCar2 - movXCar1
             secLugar = 'Vermelho'
             tercLugar = 'Azul'
             car2_car3 = movXCar1 - movXCar3
-        else:  #o carro azul é o segundo colocado
+        else:  
             dPixiel = movXCar2 - movXCar3
             secLugar = 'Azul'
             tercLugar = 'Vermelho'
             car2_car3 = movXCar3 - movXCar1
 
-    else:  #o carro azul é o vencedor
+    else:  
         vencedor = 'Azul'
         
-        if movXCar1 > movXCar2:  #o carro vermelho é o segundo colocado
+        if movXCar1 > movXCar2:  
             dPixiel = movXCar3 - movXCar1
             secLugar = 'Vermelho'
             tercLugar = 'Amarelo'
             car2_car3 = movXCar3 - movXCar1
-        else:  #o carro amarelo é o segundo colocado
+        else:  
             dPixiel = movXCar1 - movXCar2
             secLugar = 'Amarelo'
             tercLugar = 'Vermelho'
             car2_car3 = movXCar2 - movXCar1
 
     #textos vencedors
-    fonte = pygame.font.Font('freesansbold.ttf',25) #ttf é o arquivo da font
+    fonte = pygame.font.Font('arial.ttf',25) #ttf é o arquivo da font
     textovencedor = fonte.render(f'{vencedor} está {dPixel} pixels na frente do carro {secLugar}', True, branco)
     tela.blit(textovencedor, (180,20))
 
-    fonte = pygame.font.Font('freesansbold.ttf',20)#ttf é o arquivo da font
+    fonte = pygame.font.Font('arial.ttf',20)#ttf é o arquivo da font
     textoSegundo = fonte.render(f'{secLugar} está {car2_car3} pixels na frente do carro {tercLugar}', True, branco)
     tela.blit(textoSegundo, (180, 40))
     
@@ -131,7 +131,7 @@ while True:
         movXCar3 = 0
         posYCar3 = 490
     
-    fonte = pygame.font.Font("freesansbold.ttf",55)
+    fonte = pygame.font.Font("arial.ttf",55)
     textoVermelho = fonte.render("Vermelho Ganhou!", True, branco)
     textoAmarelo = fonte.render("Amarelo Ganhou!", True, branco)
     textoAzul = fonte.render("Azul Ganhou!", True, branco)
@@ -186,7 +186,7 @@ while True:
             tela.fill(branco)
             #tela.blit(ADICIONE O FUNDO FINAL AQUI, (0,0))
 
-        fonte_final = pygame.font.SysFont("freesansbold.ttf", 40)
+        fonte_final = pygame.font.SysFont("arial.ttf", 40)
         distancia_primeiro_segundo = abs(movXCar1 - movXCar2) if firstPlace == 'Vermelho' and secondPlace == 'Amarelo' or firstPlace == 'Amarelo' and secondPlace == 'Vermelho' else abs(movXCar1 - movXCar3) if firstPlace == 'Vermelho' else abs(movXCar2 - movXCar3)
         distancia_segundo_terceiro = abs(movXCar2 - movXCar3) if thirdPlace == 'Azul' else abs(movXCar1 - movXCar2)
 
