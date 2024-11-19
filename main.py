@@ -15,9 +15,11 @@ pygame.display.set_caption("Corrida Maluca")
 branco = (255,255,255)
 preto = (0,0,0)
 #fundo = pygame.image.load("recursos/ADICIONE O FUNDO DE 3 PISTAS AQUI.png")
+fundo = pygame.image.load("recursos/fundo.png")
 carroVermelho = pygame.image.load("recursos/carro1.png")
 carroAmarelo = pygame.image.load("recursos/carro2.png")
 carroAzul = pygame.image.load("recursos/carro3.png")
+fundo2 = pygame.image.load("recursos/telaFinal.png")
 #fundo2 = pygame.image.load("recursos/ADICIONE O FUNDO FINAL AQUI.png")
 
 #ALTERE AS POSIÇÕES DE ACORDO COM O TAMANHO DA PISTA AQUI:
@@ -25,8 +27,8 @@ movXCar1 = 0
 movXCar2 = 0
 movXCar3 = 0
 posYCar1 = 45
-posYCar2 = 120
-posYCar3 = 185
+posYCar2 = 115
+posYCar3 = 190
 dPixel = 0
 
 
@@ -34,7 +36,7 @@ dPixel = 0
 vitoria = pygame.mixer.Sound("recursos/vitoria.mp3")
 vitoria.set_volume(0.5)
 pygame.mixer.music.load("recursos/trilha.mp3")
-pygame.mixer.music.play(-1)
+pygame.mixer.music.play(-1) #-1 looping, 1,2 3 vezes
 somDaVitoria = False
 
 acabou = False
@@ -62,12 +64,12 @@ while True:
     
     if movXCar1 >= movXCar2 and movXCar1 >= movXCar3:
         vencedor = 'Vermelho'
-        if movXCar2 >= movXCar3:
+        if movXCar2 >= movXCar3:  # se o carro amarelo é o segundo colado
             dPixiel = movXCar1 - movXCar2
             secLugar = 'Amarelo'
             tercLugar = 'Azul'
             car2_car3 = movXCar2 - movXCar3
-        else:
+        else:  #o carro azul é o segundo colocado
             dPixiel = movXCar1 - movXCar3
             secLugar = 'Azul'
             tercLugar = 'Amarelo'
@@ -75,39 +77,39 @@ while True:
 
     elif movXCar2 >= movXCar1 and movXCar2 >= movXCar3:
         vencedor = 'Amarelo'
-        if movXCar1 >= movXCar3:  
+        if movXCar1 >= movXCar3:  #se o carro vermelho é o segundo colocado
             dPixiel = movXCar2 - movXCar1
             secLugar = 'Vermelho'
             tercLugar = 'Azul'
             car2_car3 = movXCar1 - movXCar3
-        else:  
+        else:  #o carro azul é o segundo colocado
             dPixiel = movXCar2 - movXCar3
             secLugar = 'Azul'
             tercLugar = 'Vermelho'
             car2_car3 = movXCar3 - movXCar1
 
-    else:  
+    else:  #o carro azul é o vencedor
         vencedor = 'Azul'
         
-        if movXCar1 > movXCar2:  
+        if movXCar1 > movXCar2:  #o carro vermelho é o segundo colocado
             dPixiel = movXCar3 - movXCar1
             secLugar = 'Vermelho'
             tercLugar = 'Amarelo'
             car2_car3 = movXCar3 - movXCar1
-        else:  
+        else:  #o carro amarelo é o segundo colocado
             dPixiel = movXCar1 - movXCar2
             secLugar = 'Amarelo'
             tercLugar = 'Vermelho'
             car2_car3 = movXCar2 - movXCar1
 
     #textos vencedors
-    fonte = pygame.font.Font('arial.ttf',25) #ttf é o arquivo da font
+    fonte = pygame.font.Font('freesansbold.ttf',24) #ttf é o arquivo da font
     textovencedor = fonte.render(f'{vencedor} está {dPixel} pixels na frente do carro {secLugar}', True, branco)
-    tela.blit(textovencedor, (180,20))
+    tela.blit(textovencedor, (135,25))
 
-    fonte = pygame.font.Font('arial.ttf',20)#ttf é o arquivo da font
+    fonte = pygame.font.Font('freesansbold.ttf',20)#ttf é o arquivo da font
     textoSegundo = fonte.render(f'{secLugar} está {car2_car3} pixels na frente do carro {tercLugar}', True, branco)
-    tela.blit(textoSegundo, (180, 40))
+    tela.blit(textoSegundo, (135,50))
     
     if not acabou :
         movXCar1 = movXCar1 + random.randint(0,8)
@@ -131,7 +133,7 @@ while True:
         movXCar3 = 0
         posYCar3 = 490
     
-    fonte = pygame.font.Font("arial.ttf",55)
+    fonte = pygame.font.Font("freesansbold.ttf",64)
     textoVermelho = fonte.render("Vermelho Ganhou!", True, branco)
     textoAmarelo = fonte.render("Amarelo Ganhou!", True, branco)
     textoAzul = fonte.render("Azul Ganhou!", True, branco)
@@ -183,38 +185,50 @@ while True:
     
     if acabou == True:
         if acabou:
-            tela.fill(branco)
+            tela.blit(fundo2, (0,0))
+            # Ajuste na tela final do game - Junin
+            #tela.fill(branco)
+
+            #commit de tela de fundo
             #tela.blit(ADICIONE O FUNDO FINAL AQUI, (0,0))
 
-        fonte_final = pygame.font.SysFont("arial.ttf", 40)
+        fonte_final = pygame.font.SysFont("freesansbold.ttf", 32)
         distancia_primeiro_segundo = abs(movXCar1 - movXCar2) if firstPlace == 'Vermelho' and secondPlace == 'Amarelo' or firstPlace == 'Amarelo' and secondPlace == 'Vermelho' else abs(movXCar1 - movXCar3) if firstPlace == 'Vermelho' else abs(movXCar2 - movXCar3)
         distancia_segundo_terceiro = abs(movXCar2 - movXCar3) if thirdPlace == 'Azul' else abs(movXCar1 - movXCar2)
 
+        titulo_vencedor = fonte_final.render(f'{firstPlace} Ganhou!', True, branco)
+
         # Textos para cada colocação com distâncias
+        # Textos ajustados aqui - Junin
         texto_vencedor_final = fonte_final.render(f'1º lugar: Carro {firstPlace}', True, branco)
-        texto_distancia_1_2 = fonte_final.render(f'Distância para o 2º lugar: {distancia_primeiro_segundo} pixels', True, branco)
+        texto_distancia_1_2 = fonte_final.render(f'Vantagem sobre o 2º lugar: {distancia_primeiro_segundo} pixels', True, branco)
         texto_segundo_final = fonte_final.render(f'2º lugar: Carro {secondPlace}', True, branco)
-        texto_distancia_2_3 = fonte_final.render(f'Distância para o 3º lugar: {distancia_segundo_terceiro} pixels', True, branco)
+        texto_distancia_2_3 = fonte_final.render(f'Vantagem sobre o 3º lugar: {distancia_segundo_terceiro} pixels', True, branco)
         texto_terceiro_final = fonte_final.render(f'3º lugar: Carro {thirdPlace}', True, branco)
 
-        tela.blit(texto_vencedor_final, (150, 170)) 
-        tela.blit(texto_distancia_1_2, (150, 230))  
-        tela.blit(texto_segundo_final, (150, 255))  
-        tela.blit(texto_distancia_2_3, (150, 300))  
-        tela.blit(texto_terceiro_final, (150, 325)) 
+        tela.blit(texto_vencedor_final, (140, 170)) 
+        tela.blit(texto_distancia_1_2, (140, 200))  
+        tela.blit(texto_segundo_final, (140, 255))  
+        tela.blit(texto_distancia_2_3, (140, 285))  
+        tela.blit(texto_terceiro_final, (140, 340))
+        # Distâncias dos textos ajustadas - Junin
+
+        
     
     if posYCar1 == 340 and movXCar1 >= 908 and (movXCar1 > movXCar2 and movXCar3):
-        tela.blit(textoVermelho, (365,75))
+        tela.blit(textoVermelho, (140,80))
         acabou = True
     
     elif posYCar2 == 420 and movXCar2 >= 908 and (movXCar2 > movXCar1 and movXCar3):
-        tela.blit(textoAmarelo, (365,75))
+        tela.blit(textoAmarelo, (140,80))
         acabou = True
     
     elif posYCar3 == 490 and movXCar3 >= 908 and (movXCar3 > movXCar1 and movXCar2):
-        tela.blit(textoAzul, (365,75))
+        tela.blit(textoAzul, (140,80))
         acabou = True
     
     pygame.display.update()
     clock.tick(80)
 pygame.quit()
+
+#teste
