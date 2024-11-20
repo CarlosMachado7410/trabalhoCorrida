@@ -20,7 +20,6 @@ carroAmarelo = pygame.image.load("recursos/carro2.png")
 carroAzul = pygame.image.load("recursos/carro3.png")
 fundo2 = pygame.image.load("recursos/telaFinal.png")
 
-#ALTERE AS POSIÇÕES DE ACORDO COM O TAMANHO DA PISTA AQUI:
 movXCar1 = 0
 movXCar2 = 0
 movXCar3 = 0
@@ -67,7 +66,7 @@ while True:
             secLugar = 'Amarelo'
             tercLugar = 'Azul'
             car2_car3 = movXCar2 - movXCar3
-        else:  #carro azul segundo colocado
+        else:  
             dPixiel = movXCar1 - movXCar3
             secLugar = 'Azul'
             tercLugar = 'Amarelo'
@@ -75,12 +74,12 @@ while True:
 
     elif movXCar2 >= movXCar1 and movXCar2 >= movXCar3:
         vencedor = 'Amarelo'
-        if movXCar1 >= movXCar3:  #carro vermelho segundo colocado
+        if movXCar1 >= movXCar3:  
             dPixiel = movXCar2 - movXCar1
             secLugar = 'Vermelho'
             tercLugar = 'Azul'
             car2_car3 = movXCar1 - movXCar3
-        else:  #carro azul segundo colocado
+        else:  
             dPixiel = movXCar2 - movXCar3
             secLugar = 'Azul'
             tercLugar = 'Vermelho'
@@ -89,25 +88,25 @@ while True:
     else: 
         vencedor = 'Azul'
         
-        if movXCar1 > movXCar2:  # carro vermelho segundo colocado
+        if movXCar1 > movXCar2:  
             dPixiel = movXCar3 - movXCar1
             secLugar = 'Vermelho'
             tercLugar = 'Amarelo'
             car2_car3 = movXCar3 - movXCar1
-        else:  #carro amarelo segundo colocado
+        else:  
             dPixiel = movXCar1 - movXCar2
             secLugar = 'Amarelo'
             tercLugar = 'Vermelho'
             car2_car3 = movXCar2 - movXCar1
 
-    #texto win
-    fonte = pygame.font.Font('freesansbold.ttf',24)
-    textovencedor = fonte.render(f'{vencedor} está {dPixel} pixels na frente do carro {secLugar}', True, branco)
-    tela.blit(textovencedor, (135,25))
+    
+    fonte = pygame.font.Font('freesansbold.ttf',15)
+    textovencedor = fonte.render(f'{vencedor} está {dPixiel} pixels na frente do carro {secLugar}', True, branco)
+    tela.blit(textovencedor, (0,25))
 
-    fonte = pygame.font.Font('freesansbold.ttf',20)
+    fonte = pygame.font.Font('freesansbold.ttf',15)
     textoSegundo = fonte.render(f'{secLugar} está {car2_car3} pixels na frente do carro {tercLugar}', True, branco)
-    tela.blit(textoSegundo, (135,50))
+    tela.blit(textoSegundo, (0,50))
     
     if not acabou :
         movXCar1 = movXCar1 + random.randint(0,8)
@@ -136,20 +135,20 @@ while True:
     textoAmarelo = fonte.render("Amarelo Ganhou!", True, branco)
     textoAzul = fonte.render("Azul Ganhou!", True, branco)
     
-    #variavel das distancias
+    
     textoDist_1_2 = fonte.render(d1_2, True, branco)
     textoDist_1_3 = fonte.render(d1_3, True, branco)
     textoDist_2_3 = fonte.render(d2_3, True, branco)
-    
+
     distanciaPixel = 0
     if movXCar1 >= movXCar2 and movXCar1 >= movXCar3:
         firstPlace = 'Vermelho'
-        if movXCar2 >= movXCar3:  #carro amarelo segundo colado
+        if movXCar2 >= movXCar3:  # Se o carro amarelo é o segundo colocado
             distanciaPixel = abs(movXCar1 - movXCar2)
             secondPlace = 'Amarelo'
             thirdPlace = 'Azul'
             distancia_segundo_terceiro = abs(movXCar2 - movXCar3)
-        else:  #o carro azul segundo colocado
+        else:  # O carro azul é o segundo colocado
             distanciaPixel = abs(movXCar1 - movXCar3)
             secondPlace = 'Azul'
             thirdPlace = 'Amarelo'
@@ -157,25 +156,25 @@ while True:
 
     elif movXCar2 >= movXCar1 and movXCar2 >= movXCar3:
         firstPlace = 'Amarelo'
-        if movXCar1 >= movXCar3:  #carro vermelho segundo colocado
+        if movXCar1 >= movXCar3:   #Se o carro vermelho é o segundo colocado
             distanciaPixel = abs(movXCar2 - movXCar1)
             secondPlace = 'Vermelho'
             thirdPlace = 'Azul'
             distancia_segundo_terceiro = abs(movXCar1 - movXCar3)
-        else:  #carro azul é o segundo colocado
+        else:  #O carro azul é o segundo colocado
             distanciaPixel = abs(movXCar2 - movXCar3)
             secondPlace = 'Azul'
             thirdPlace = 'Vermelho'
             distancia_segundo_terceiro = abs(movXCar3 - movXCar1)
 
-    else:
+    else:  #O carro azul é o vencedor
         firstPlace = 'Azul'
-        if movXCar1 > movXCar2:  #carro vermelho segundo colocado
+        if movXCar1 > movXCar2:  #o carro vermelho é o segundo colocado
             distanciaPixel = abs(movXCar3 - movXCar1)
             secondPlace = 'Vermelho'
             thirdPlace = 'Amarelo'
             distancia_segundo_terceiro = abs(movXCar3 - movXCar1)
-        else:  #carro amarelo segundo colocado
+        else:  # O carro amarelo é o segundo colocado
             distanciaPixel = abs(movXCar1 - movXCar2)
             secondPlace = 'Amarelo'
             thirdPlace = 'Vermelho'
@@ -185,10 +184,10 @@ while True:
         if acabou:
             tela.blit(fundo2, (0,0))
             # Ajuste na tela final do game - Juninho
-            #tela.fill(branco)
+            
 
-            #commit de tela de fundo
-            #tela.blit(ADICIONE O FUNDO FINAL AQUI, (0,0))
+            
+            
 
         fonte_final = pygame.font.SysFont("freesansbold.ttf", 32)
         distancia_primeiro_segundo = abs(movXCar1 - movXCar2) if firstPlace == 'Vermelho' and secondPlace == 'Amarelo' or firstPlace == 'Amarelo' and secondPlace == 'Vermelho' else abs(movXCar1 - movXCar3) if firstPlace == 'Vermelho' else abs(movXCar2 - movXCar3)
@@ -197,7 +196,7 @@ while True:
         titulo_vencedor = fonte_final.render(f'{firstPlace} Ganhou!', True, branco)
 
 
-        # Textos da tela final com a posição final de cada carro
+        
         texto_vencedor_final = fonte_final.render(f'1º lugar: Carro {firstPlace}', True, branco)
         texto_distancia_1_2 = fonte_final.render(f'Vantagem sobre o 2º lugar: {distancia_primeiro_segundo} pixels', True, branco)
         texto_segundo_final = fonte_final.render(f'2º lugar: Carro {secondPlace}', True, branco)
