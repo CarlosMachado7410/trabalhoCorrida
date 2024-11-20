@@ -12,7 +12,7 @@ icone = pygame.image.load("recursos/icone.ico")
 pygame.display.set_icon(icone)
 pygame.display.set_caption("Corrida Maluca")
 
-branco = (255,255,255)
+branco1 = (255,255,255)
 preto = (0,0,0)
 fundo = pygame.image.load("recursos/fundo.png")
 carroVermelho = pygame.image.load("recursos/carro1.png")
@@ -44,7 +44,7 @@ while True:
         if evento.type == pygame.QUIT:
             quit()
    
-    tela.fill( branco )
+    tela.fill( branco1 )
     tela.blit(fundo, (0,0))
     tela.blit(carroVermelho, (movXCar1,posYCar1))
     tela.blit(carroAmarelo, (movXCar2,posYCar2))
@@ -101,11 +101,11 @@ while True:
 
     
     fonte = pygame.font.Font('freesansbold.ttf',15)
-    textovencedor = fonte.render(f'{vencedor} está {dPixiel} pixels na frente do carro {secLugar}', True, branco)
+    textovencedor = fonte.render(f'{vencedor} está {dPixiel} pixels na frente do carro {secLugar}', True, branco1)
     tela.blit(textovencedor, (0,25))
 
     fonte = pygame.font.Font('freesansbold.ttf',15)
-    textoSegundo = fonte.render(f'{secLugar} está {car2_car3} pixels na frente do carro {tercLugar}', True, branco)
+    textoSegundo = fonte.render(f'{secLugar} está {car2_car3} pixels na frente do carro {tercLugar}', True, branco1)
     tela.blit(textoSegundo, (0,50))
     
     if not acabou :
@@ -131,14 +131,14 @@ while True:
         posYCar3 = 490
     
     fonte = pygame.font.Font("freesansbold.ttf",64)
-    textoVermelho = fonte.render("Vermelho Ganhou!", True, branco)
-    textoAmarelo = fonte.render("Amarelo Ganhou!", True, branco)
-    textoAzul = fonte.render("Azul Ganhou!", True, branco)
+    textoVermelho = fonte.render("Vermelho Ganhou!", True, branco1)
+    textoAmarelo = fonte.render("Amarelo Ganhou!", True, branco1)
+    textoAzul = fonte.render("Azul Ganhou!", True, branco1)
     
     
-    textoDist_1_2 = fonte.render(d1_2, True, branco)
-    textoDist_1_3 = fonte.render(d1_3, True, branco)
-    textoDist_2_3 = fonte.render(d2_3, True, branco)
+    textoDist_1_2 = fonte.render(d1_2, True, branco1)
+    textoDist_1_3 = fonte.render(d1_3, True, branco1)
+    textoDist_2_3 = fonte.render(d2_3, True, branco1)
 
     distanciaPixel = 0
     if movXCar1 >= movXCar2 and movXCar1 >= movXCar3:
@@ -193,15 +193,15 @@ while True:
         distancia_primeiro_segundo = abs(movXCar1 - movXCar2) if firstPlace == 'Vermelho' and secondPlace == 'Amarelo' or firstPlace == 'Amarelo' and secondPlace == 'Vermelho' else abs(movXCar1 - movXCar3) if firstPlace == 'Vermelho' else abs(movXCar2 - movXCar3)
         distancia_segundo_terceiro = abs(movXCar2 - movXCar3) if thirdPlace == 'Azul' else abs(movXCar1 - movXCar2)
 
-        titulo_vencedor = fonte_final.render(f'{firstPlace} Ganhou!', True, branco)
+        titulo_vencedor = fonte_final.render(f'{firstPlace} Ganhou!', True, branco1)
 
 
         
-        texto_vencedor_final = fonte_final.render(f'1º lugar: Carro {firstPlace}', True, branco)
-        texto_distancia_1_2 = fonte_final.render(f'Vantagem sobre o 2º lugar: {distancia_primeiro_segundo} pixels', True, branco)
-        texto_segundo_final = fonte_final.render(f'2º lugar: Carro {secondPlace}', True, branco)
-        texto_distancia_2_3 = fonte_final.render(f'Vantagem sobre o 3º lugar: {distancia_segundo_terceiro} pixels', True, branco)
-        texto_terceiro_final = fonte_final.render(f'3º lugar: Carro {thirdPlace}', True, branco)
+        texto_vencedor_final = fonte_final.render(f'1º lugar: Carro {firstPlace}', True, branco1)
+        texto_distancia_1_2 = fonte_final.render(f'Vantagem sobre o 2º lugar: {distancia_primeiro_segundo} pixels', True, branco1)
+        texto_segundo_final = fonte_final.render(f'2º lugar: Carro {secondPlace}', True, branco1)
+        texto_distancia_2_3 = fonte_final.render(f'Vantagem sobre o 3º lugar: {distancia_segundo_terceiro} pixels', True, branco1)
+        texto_terceiro_final = fonte_final.render(f'3º lugar: Carro {thirdPlace}', True, branco1)
 
         tela.blit(texto_vencedor_final, (140, 170)) 
         tela.blit(texto_distancia_1_2, (140, 200))  
@@ -227,3 +227,6 @@ while True:
     pygame.display.update()
     clock.tick(80)
 pygame.quit()
+
+#PROJETO FINALIZADO 20/11/2024
+
