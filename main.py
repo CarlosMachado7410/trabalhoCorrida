@@ -14,7 +14,6 @@ pygame.display.set_caption("Corrida Maluca")
 
 branco = (255,255,255)
 preto = (0,0,0)
-#fundo = pygame.image.load("recursos/ADICIONE O FUNDO DE 3 PISTAS AQUI.png")
 fundo = pygame.image.load("recursos/fundo.png")
 carroVermelho = pygame.image.load("recursos/carro1.png")
 carroAmarelo = pygame.image.load("recursos/carro2.png")
