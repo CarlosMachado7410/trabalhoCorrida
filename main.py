@@ -20,6 +20,7 @@ carroAmarelo = pygame.image.load("recursos/carro2.png")
 carroAzul = pygame.image.load("recursos/carro3.png")
 fundo2 = pygame.image.load("recursos/telaFinal.png")
 
+#ALTERE AS POSIÇÕES DE ACORDO COM O TAMANHO DA PISTA AQUI:
 movXCar1 = 0
 movXCar2 = 0
 movXCar3 = 0
@@ -195,8 +196,8 @@ while True:
 
         titulo_vencedor = fonte_final.render(f'{firstPlace} Ganhou!', True, branco)
 
-        # Textos para cada colocação com distâncias
-        # Textos ajustados aqui - Junin
+
+        # Textos da tela final com a posição final de cada carro
         texto_vencedor_final = fonte_final.render(f'1º lugar: Carro {firstPlace}', True, branco)
         texto_distancia_1_2 = fonte_final.render(f'Vantagem sobre o 2º lugar: {distancia_primeiro_segundo} pixels', True, branco)
         texto_segundo_final = fonte_final.render(f'2º lugar: Carro {secondPlace}', True, branco)
