@@ -186,7 +186,7 @@ while True:
     if acabou == True:
         if acabou:
             tela.blit(fundo2, (0,0))
-            # Ajuste na tela final do game - Junin
+            # Ajuste na tela final do game - Juninho
             #tela.fill(branco)
 
             #commit de tela de fundo
@@ -230,5 +230,3 @@ while True:
     pygame.display.update()
     clock.tick(80)
 pygame.quit()
-
-#teste
