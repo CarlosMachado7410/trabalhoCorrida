@@ -1,4 +1,4 @@
 import os
-def limparTela():
+def limparTela() :
     os.system('cls')
 
