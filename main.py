@@ -101,12 +101,12 @@ while True:
 
     
     fonte = pygame.font.Font('freesansbold.ttf',15)
-    textovencedor = fonte.render(f'{vencedor} está {dPixiel} pixels na frente do carro {secLugar}', True, branco1)
-    tela.blit(textovencedor, (0,25))
+    textovencedor = fonte.render(f'{vencedor} com vantagem de {dPixiel} pixels sobre o {secLugar}', True, branco1)
+    tela.blit(textovencedor, (300,25))
 
     fonte = pygame.font.Font('freesansbold.ttf',15)
-    textoSegundo = fonte.render(f'{secLugar} está {car2_car3} pixels na frente do carro {tercLugar}', True, branco1)
-    tela.blit(textoSegundo, (0,50))
+    textoSegundo = fonte.render(f'{secLugar} com vantagem de {car2_car3} pixels sobre o {tercLugar}', True, branco1)
+    tela.blit(textoSegundo, (300,50))
     
     if not acabou :
         movXCar1 = movXCar1 + random.randint(0,8)
